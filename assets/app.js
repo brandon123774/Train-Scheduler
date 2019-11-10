@@ -25,7 +25,8 @@ $("#submit").on("click", function (event) {
     var freq = $("#frequency").val().trim();
     var nextArrival = "";
     var minutesAway = "";
-    // Code for handling the push
+
+    // Code for pushing the data into the db
     dataRef.ref().push({
         trainName: trainName,
         dest: dest,
@@ -33,21 +34,36 @@ $("#submit").on("click", function (event) {
         freq: freq,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
+
+    //empties out the text boxes for next time
+    $("#train-name").val("");
+    $("#destination").val("");
+    $("#first-train").val("");
+    $("#frequency").val("");
 });
 
 var count = 0;
 
 // Firebase watcher .on("child_added"
 dataRef.ref().on("child_added", function (childSnapshot) {
-    count++
+    console.log(childSnapshot.val());
 
-    // storing the snapshot.val() in a variable for convenience
+
+    // storing the snapshot.val() in a variable 
     var trainInfo = snapshot.val();
+
+    //save into variables to use
+    var trainName = childSnapshot.val().trainName;
+    var dest = childSnapshot.val().dest;
+    var firstTrainTime = childSnapshot.val().firstTrainTime;
+    var freq = childSnapshot.val().freq;
+
     // Console.loging the last user's data
     console.log(childSnapshot.trainName);
     console.log(childSnapshot.dest);
     console.log(childSnapshot.firstTrainTime);
     console.log(childSnapshot.freq);
+    
     var row = $("<tr>");
     var col = $("<td>");
     $(row).append("<td>" + childSnapshot.trainName + "</td>" + "<td>" + childSnapshot.dest + "</td>" + "<td>" + childSnapshot.firstTrainTime + "</td>" + "<td>" + childSnapshot.freq + "</td>" + "<td>");
