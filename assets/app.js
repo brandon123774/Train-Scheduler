@@ -14,17 +14,19 @@ firebase.initializeApp(firebaseConfig);
 
 // Create a variable to reference the database
 var database = firebase.database();
+// function for the submit button
 $("#submit").on("click", function (event) {
     event.preventDefault();
+
     //read in values for train info
-    var trainName = $("#t-name").val().trim();
-    var dest = $("#d-destination").val().trim();
-    var firstTrainTime = $("#first-train-time").val().trim();
-    var freq = $("#f-frequency").val().trim();
+    var trainName = $("#train-name").val().trim();
+    var dest = $("#destination").val().trim();
+    var firstTrainTime = moment($("#first-train").val().trim().calendar());
+    var freq = $("#frequency").val().trim();
     var nextArrival = "";
     var minutesAway = "";
     // Code for handling the push
-    database.ref().push({
+    dataRef.ref().push({
         trainName: trainName,
         dest: dest,
         firstTrainTime: firstTrainTime,
@@ -33,18 +35,22 @@ $("#submit").on("click", function (event) {
     });
 });
 
+var count = 0;
+
 // Firebase watcher .on("child_added"
-database.ref().on("child_added", function (snapshot) {
+dataRef.ref().on("child_added", function (childSnapshot) {
+    count++
+
     // storing the snapshot.val() in a variable for convenience
     var trainInfo = snapshot.val();
     // Console.loging the last user's data
-    console.log(trainInfo.trainName);
-    console.log(trainInfo.dest);
-    console.log(trainInfo.firstTrainTime);
-    console.log(trainInfo.freq);
+    console.log(childSnapshot.trainName);
+    console.log(childSnapshot.dest);
+    console.log(childSnapshot.firstTrainTime);
+    console.log(childSnapshot.freq);
     var row = $("<tr>");
     var col = $("<td>");
-    $(row).append("<td>" + trainInfo.trainName + "</td>" + "<td>" + trainInfo.dest + "</td>" + "<td>" + trainInfo.firstTrainTime + "</td>" + "<td>" + sv.monthsWorked + "</td>" + "<td>" + sv.monthlyRate + "</td>" + "<td>" + trainInfo.freq + "</td>");
+    $(row).append("<td>" + childSnapshot.trainName + "</td>" + "<td>" + childSnapshot.dest + "</td>" + "<td>" + childSnapshot.firstTrainTime + "</td>" + "<td>" + childSnapshot.freq + "</td>" + "<td>");
 
-    $("#tableEmp").append(row)
+    // $("#tableEmp").append(row)
    });
