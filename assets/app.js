@@ -63,10 +63,19 @@ dataRef.ref().on("child_added", function (childSnapshot) {
     console.log(childSnapshot.dest);
     console.log(childSnapshot.firstTrainTime);
     console.log(childSnapshot.freq);
-    
-    var row = $("<tr>");
-    var col = $("<td>");
-    $(row).append("<td>" + childSnapshot.trainName + "</td>" + "<td>" + childSnapshot.dest + "</td>" + "<td>" + childSnapshot.firstTrainTime + "</td>" + "<td>" + childSnapshot.freq + "</td>" + "<td>");
 
-    // $("#tableEmp").append(row)
-   });
+    // Need to calculate the arrival time of the trains THISHERERERERERE
+
+    //Create the new row(s) of train data from the form
+    var newRow = $("<tr>").append(
+        $("<td>").text(trainName),
+        $("<td>").text(dest),
+        $("<td>").text(freq),
+        $("<td>").text(nextArrival),
+        $("<td>").text(minutesAway),
+    );
+
+    //have to append these to the DOM on the table finally using jquery
+    $("#train-table > tbody").append(newRow);
+
+});

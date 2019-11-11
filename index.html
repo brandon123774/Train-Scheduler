@@ -18,68 +18,85 @@
 
 <body>
     <div class="container">
+        <!-- jumbotron -->
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4">The Train Way it is</h1>
-                <p class="lead">Choo-choo this way</p>
+                <h1 class="text-center">The Train Way it is</h1>
+                <p class="text-center">Choo-choo's this way</p>
             </div>
         </div>
 
+        <!-- table header -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header">Current Train Schedule</div>
+                    <div class="card-body">
 
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Train Name</th>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Frequency (min)</th>
-                    <th scope="col">Next Arrival</th>
-                    <th scope="col">Minutes Away</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <form>
-            <div class="form-group">
-                <label for="train-name">Train Name</label>
-                <input type="text" class="form-control" id="train-name">
+                        <!-- table itself -->
+                        <table class="table" id="train-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="destination">Destination</label>
-                <input type="text" class="form-control" id="destination">
-            </div>
-            <div class="form-group">
-                <label for="first-train">First Train Time (HH:mm - military time)</label>
-                <input type="text" class="form-control" id="first-train">
-            </div>
-            <div class="form-group">
-                <label for="frequency">Frequency (min)</label>
-                <input type="text" class="form-control" id="frequency">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
 
-        </form>
-    </div>
+            <!-- train info header -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4">
+                        <div class="card-header">Add A Train</div>
+                        <div class="card-body">
+                            <!-- form -->
+                            <form>
+                                <div class="form-group">
+                                    <label for="train-name">Train Name</label>
+                                    <input type="text" class="form-control" id="train-name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="destination">Destination</label>
+                                    <input type="text" class="form-control" id="destination">
+                                </div>
+                                <div class="form-group">
+                                    <label for="first-train">First Train Time (HH:mm - military time)</label>
+                                    <input type="text" class="form-control" id="first-train">
+                                </div>
+                                <div class="form-group">
+                                    <label for="frequency">Frequency (min)</label>
+                                    <input type="text" class="form-control" id="frequency">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+            <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
 
 
-    <!-- jquery link -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- link to app.js file -->
-    <script type="text/ stylesheet" src="assets/app.js"> </script>
+            <!-- jquery link -->
+            <script src="https://code.jquery.com/jquery.js"></script>
+            <!-- link to app.js file -->
+            <script type="text/ stylesheet" src="../Train-Scheduler/assets/app.js"> </script>
 </body>
 
 </html>
