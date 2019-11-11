@@ -12,6 +12,7 @@ The idea of the program is to be able to create a train schedule so that one can
 
 ## Bits of code 
 //This allows the user to link the application to the firebase database so that the developer can see activity as well as to have the application data save to a location
+
 var firebaseConfig = {
         apiKey: "AIzaSyBwmsWLnuJFQguHEsQEIW-BDmstVT--HPA",
         authDomain: "train-scheduler-b340a.firebaseapp.com",
